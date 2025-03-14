@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+:root{
+    --green-lighter: hsl(148, 38%, 91%);
+    --green-medium: hsl(169, 82%, 27%);
+    --red: hsl(0, 66%, 54%);
+    --white: hsl(0, 0%, 100%);
+    --grey-medium: hsl(186, 15%, 59%);
+    --grey-darker: hsl(187, 24%, 22%);
+}
+*,::after,::before{
+    box-sizing: border-box;
+}
+body{
+    font-family: "Karla", sans-serif;
+}
