@@ -8,39 +8,66 @@
   
   <title>Frontend Mentor | Contact form</title>
   <link rel="stylesheet" href="./styles.css">
-  <script src="./code.js"></script>
+  <script src="./code.js" defer></script>
   
 </head>
 <body>
-
-  Contact Us
-
-  First Name
-  This field is required
-
-  Last Name
-  This field is required
-
-  Email Address
-  Please enter a valid email address
-  This field is required
-
-  Query Type
-  General Enquiry
-  Support Request
-  Please select a query type
-
-  Message
-  This field is required
-
-  I consent to being contacted by the team
-  To submit this form, please consent to being contacted
-
-  Submit
-
-  Message Sent!
-  Thanks for completing the form. We'll be in touch soon!
+  <main>
+    <h1>Contact Us</h1>
+    <form class="form_block" action="#" >
+      <!-- Block names -->
+      <div class="inputs d-flex">
+        <div class="names_block">
+          <div class="names_block_item d-flex">
+            <label for="name">First Name</label>
+            <input type="text" name="name" id="name" tabindex="1">
+          </div>
+          <div class="names_block_item d-flex">
+            <label for="lastName">Last Name</label>
+            <input type="text" name="last-name" id="lastName" tabindex="2">
+          </div>
+        </div>
+        <!-- Block email -->
+        <div class="email_block d-flex">
+          <label for="email">Email Address</label>
+          <input type="email" name="email" id="email" tabindex="3">
+        </div>
+        <!-- Query Type -->
+        <fieldset class="query_type_block">
+          <legend class="mb-16" id="query-label">Query Type<span class="ml-8">*</span></legend>
+          <div class="radio_options">
+            <label class="r_option">
+              <input type="radio" name="radio" aria-labelledby="query-label" value="general">General Enquiry
+            </label>
+            <label class="r_option">
+              <input type="radio" name="radio" aria-labelledby="query-label" value="support">Support Request
+            </label>
+          </div>
+        </fieldset>
+        <!-- Text area -->
+        <div class="text_area_block d-flex">
+          <label class="mb-8" for="textArea">Message</label>
+          <textarea class="text_area" id="textArea"></textarea>
+        </div>
+      </div>
+      <!-- Check box -->
+      <div class="checkbox_block">
+        <div class="checkbox_block-inner">
+          <input type="checkbox" id="checkbox" aria-describedby="checkbox-desc">
+          <label for="checkbox">I consent to being contacted by the team</label>
+        </div>
+      </div>
+      <button type="submit" class="button" id="button">Submit</button>
+    </form>
   
-  
+    <div class="success_block" aria-live="assertive" role="alert">
+      <div class="success_block-header">
+        <img src="./assets/images/icon-success-check.svg" alt="Icon success">
+        <h4>Message Sent!</h4>
+      </div>
+      <p>Thanks for completing the form. We'll be in touch soon!</p>
+    </div>
+
+  </main>
 </body>
 </html>
