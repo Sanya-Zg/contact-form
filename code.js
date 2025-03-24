@@ -11,7 +11,7 @@ const button = document.getElementById('button');
 const successBlock = document.querySelector('.success_block');
 
 const inputElements = [
-  inpName, lastName, email, textArea
+  inpName, lastName, textArea
 ]
 
 // Add * to labels
@@ -25,6 +25,7 @@ labels.forEach(label => {
 form.addEventListener('submit', (event) => {
   event.preventDefault();
   checkNames();
+  checkEmail();
   checkRadioButtons();
   checkCheckbox();
 
@@ -38,6 +39,8 @@ form.addEventListener('submit', (event) => {
     resetForm();
   }
 });
+
+email.addEventListener('input', checkEmail);
 
 // Check if input name and last name are empty
 function checkNames() {
@@ -64,6 +67,28 @@ function checkNames() {
     name.dispatchEvent(new Event('input'));
   });
 }
+
+function checkEmail() {
+  let existingError = email.nextElementSibling; 
+  const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  if (!emailPattern.test(email.value.trim())) { // Очищаємо зайві пробіли
+    if (!existingError || !existingError.classList.contains('err')) {
+      let spanError = document.createElement('span');
+      spanError.textContent = 'Please enter a valid email address';
+      spanError.className = 'err';
+      email.classList.add('err_border');
+      email.insertAdjacentElement('afterend', spanError);
+    }
+  } else {
+    if (existingError && existingError.classList.contains('err')) {
+      existingError.remove();
+      email.classList.remove('err_border');
+    }
+  }
+}
+
+
 // Check if radio button is checked
 function checkRadioButtons() {
   const isChecked = Array.from(radioInput).some(radio => radio.checked);
@@ -123,6 +148,7 @@ checkBox.addEventListener('input', () => {
 // Check if form is valid
 function isFormValid() {
   let isValid = true;
+  const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   inputElements.forEach(input => {
     if (input.value.trim() === '') {
@@ -130,7 +156,11 @@ function isFormValid() {
     }
   });
 
+
   if (!Array.from(radioInput).some(radio => radio.checked)) {
+    isValid = false;
+  }
+  if (!emailPattern.test(email.value.trim())) { 
     isValid = false;
   }
 
