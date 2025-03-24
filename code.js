@@ -31,9 +31,9 @@ form.addEventListener('submit', (event) => {
   // If all checks are passed, we clear the form
   if (isFormValid()) {
     successBlock.style.display = 'block';
-    setTimeout(() => {
-      successBlock.style.display = 'none';
-    }, 5000)
+    // setTimeout(() => {
+    //   successBlock.style.display = 'none';
+    // }, 5000)
 
     resetForm();
   }
